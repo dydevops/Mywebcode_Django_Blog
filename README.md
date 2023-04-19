@@ -73,7 +73,7 @@ To view the complete blog post when clicked on Read More or on the Title.
 Users can Login/Register to the Blog App.
 
 ### Comment
-Users can comment to any blog post after login or comment anonymously without login.
+Users can comment and reply to any blog post after login.
 
 ### Create Blog Post
 Users can create blog posts from the front end and add for approval, by the admin.
