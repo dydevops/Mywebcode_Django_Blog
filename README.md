@@ -1,6 +1,6 @@
 # Mywebcode Django Blog
 # This is a full-featured Blog application made completely with Python Django, Bootstrap Template Use
-# Visit Our Blog https://www.dydevops.com/
+# Visit Our Blog https://www.mywebcode.com/
 
 This Blogging web application project is purely made with Django as the backend and Bootstrap as the frontend.
 
