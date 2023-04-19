@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% load extras %}
+<!--=       Breadcrumb Area Start      =-->
+        <!--=====================================-->
+
+        <div class="edu-breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-inner">
+                    <div class="page-title">
+                        <h1 class="title">{{post.title}}</h1>
+                    </div>
+                    <ul class="edu-breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="separator"><i class="icon-angle-right"></i></li>
+                        <li class="breadcrumb-item"><a href="{% url 'post' %}">Blog</a></li>
+                        <li class="separator"><i class="icon-angle-right"></i></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{post.title}}</li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="shape-group">
+                <li class="shape-1">
+                    <span></span>
+                </li>
+                <li class="shape-2 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape"></li>
+                <li class="shape-3 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-15.png' %}" alt="shape"></li>
+                <li class="shape-4">
+                    <span></span>
+                </li>
+                <li class="shape-5 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="shape"></li>
+            </ul>
+        </div>
+
+        <!--=====================================-->
+        <!--=        Blog Area Start            =-->
+        <!--=====================================-->
+        <section class="section-gap-equal">
+            <div class="container">
+                <div class="row row--30">
+                    <div class="col-lg-8">
+                        <div class="blog-details-content">
+                            <div class="entry-content">
+                                <span class="category">{{post.category }}</span>
+                                <h3 class="title">{{post.title}}</h3>
+                                <ul class="blog-meta">
+                                    <li><i class="icon-62"></i>{{post.author}}</li>
+                                    <li><i class="icon-27"></i>{{post.created_on|date:'d F, Y'}}</li>
+                                </ul>
+                                <div class="thumbnail">
+                                    <img src="{{ post.image.url }}" alt="Blog Image">
+                                </div>
+                            </div>
+                            <p>{{post.content|safe}}</p>
+                            <div class="blog-share-area">
+                                <div class="row align-items-center">
+                                    <div class="col-md-7">
+                                        <div class="blog-tags">
+                                            <h6 class="title">Tags:</h6>
+                                            <div class="tag-list">
+                                                <a href="#">Language</a>
+                                                <a href="#">eLearn</a>
+                                                <a href="#">Tips</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="blog-share">
+                                            <h6 class="title">Share on:</h6>
+                                            <ul class="social-share icon-transparent">
+                                                <li>
+                                                    <a href="#"><i class="icon-facebook"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="icon-twitter"></i></a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><i class="icon-instagram"></i></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="blog-author">
+                            <div class="thumbnail">
+                                <img src="{{ post.author.profile_picture.url }}" alt="Author Images">
+                            </div>
+                            <div class="author-content">
+                                <h5 class="title">About the Author: {{post.author}}</h5>
+                                <p>{{post.author.bio|safe|truncatechars:160}}</p>
+                                <ul class="social-share icon-transparent">
+                                    <li>
+                                        <a href="{{post.author.facebook_link}}"><i class="icon-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{post.author.linkedin_link}}"><i class="icon-linkedin2"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="{{post.author.linkedin_link}}"><i class="icon-youtube"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="blog-pagination">
+                            <div class="row g-5">
+                                <div class="col-lg-6">
+                                    <div class="blog-pagination-list prev-post">
+                                        <a href="#">
+                                            <i class="icon-west"></i>
+                                            <span>Instructional Design and Adult Learners</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <div class="blog-pagination-list next-post">
+                                        <a href="#">
+                                            <span>Qualification for Students Satisfaction Rate</span>
+                                            <i class="icon-east"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="comment-area">
+                            <h2 class="heading-title" >Comments ({{comments.count}})</h2>
+                            <div class="comment-form-area">
+                              {% if user.is_authenticated %}
+                                <h3 class="heading-title">Leave Your Comment Here</h3>
+                                <form  class="comment-form" action="{% url 'postComment' %}" method="post">
+                                    {% csrf_token %}
+                                    <div class="row g-5">
+                                        <div class="form-group col-12">
+                                            <textarea name="comment" id="comm-message" cols="30" rows="5" placeholder="Leave A Comment"></textarea>
+                                        </div>
+                                        <input type="hidden"name="postSno" value="{{post.sno}}">
+                                        <input type="hidden" name="parentSno" value="">
+                                        <div class="form-group col-12">
+                                            <button type="submit" class="edu-btn btn-small" style="margin-bottom: 10px;">Submit <i class="icon-4"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                              {% else %}
+                              <p>Please <button type="button" class="edu-btn btn-small" data-toggle="modal" data-target="#loginModal" style="margin-bottom: 10px;">
+                                Login</button> to post a comment</p>
+                              {% endif %}
+                           
+                            </div>
+                          {% for comment in comments %}
+                            <div class="comment-list-wrapper">
+                                <div class="comment">
+                                <div class="thumbnail">
+                                    <img  src="{% static 'img/user.png' %}" alt="user">
+                                </div>
+                                <div class="comment-content">
+                                    <h5 class="title">{{comment.user.full_name}}</h5>
+                                    <span class="date">{{comment.created_on}}</span>
+                                    <p>{{comment.comment}}</p>
+                                    <div class="reply-btn-wrapper">
+                                        {% if user.is_authenticated %}
+                                        <button class="edu-btn btn-small" type="button" data-toggle="collapse" data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}}" style="margin-bottom: 10px;">
+                                            Reply
+                                          </button>
+                                          <div class="collapse" id="replyBox{{comment.sno}}">
+                                            <div class="card card-body my-2">
+                                              <form  class="comment-form" action="{% url 'postComment' %}" method="post">
+                                                  {% csrf_token %}
+                                                  <div class="row g-5">
+                                                      <div class="form-group col-12">
+                                                          <label for="comment">Post a Reply</label>
+                                                          <textarea name="comment" id="comm-message" cols="30" rows="5" placeholder="Enter reply here"></textarea>
+                                                      </div>
+                                                      <input type="hidden" name="parentSno" value="{{comment.sno}}">
+                                                      <input type="hidden"name="postSno" value="{{post.sno}}"> 
+                                                      <div class="form-group col-12">
+                                                          <button type="submit" class="edu-btn btn-small">Submit <i class="icon-4"></i></button>
+                                                      </div>
+                                                  </div>
+                                              </form>
+                                             </div>
+                                          </div>
+                                          {% else %}
+                                         <button class="edu-btn btn-small" type="button" data-toggle="collapse" data-target="#replyBox{{comment.sno}}" aria-expanded="false" aria-controls="replyBox{{comment.sno}} disabled" style="margin-bottom: 10px;">
+                                         Login to  Reply
+                                         </button>
+                                        {% endif %}
+                                         
+                                          <!-- Start Single Comment  -->
+                                         <div class="comment-content">
+                                            {% for reply in replyDict|get_val:comment.sno %}
+                                            <div class="comment">
+                                                <div class="thumbnail">
+                                                    <img  src="{% static 'img/user.png' %}" alt="user">
+                                                </div>
+                                             <div class="comment-content">
+                                                 <h5 class="title">{{reply.user.full_name}}</h5>
+                                                 <span class="date">{{reply.created_on}}</span>
+                                                 <p>{{reply.comment}}.</p>
+         
+                                              </div>
+                                            </div>
+                                              {% endfor %}
+                                        </div>
+                                         <!-- End Single Comment  -->
+                                    </div>
+                                </div>
+                                </div>
+                          </div>
+                          {% endfor %}
+                        </div>
+                        <!-- End Comment Area  -->
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="edu-blog-sidebar">
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget widget-search">
+                                <div class="inner">
+                                    <h4 class="widget-title">Search</h4>
+                                    <div class="content">
+                                        <form class="blog-search" action="{% url 'search' %}" method="GET">
+                                            <input type="text" placeholder="Search" name="keyword" value="{{request.GET.keyword}}">
+                                            <button class="search-button" type="submit"><i class="icon-2"></i></button>
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget widget-latest-post">
+                                <div class="inner">
+                                    <h4 class="widget-title">Latest Post</h4>
+                                    <div class="content latest-post-list">
+                                        {% for post in recent_posts %}
+                                        <div class="latest-post ">
+                                            <div class="thumbnail">
+                                                <a href="{{ post.get_url }}">
+                                                    <img src="{{ post.image.url }}" alt="Blog Images">
+                                                </a>
+                                            </div>
+                                            <div class="post-content">
+                                                <h6 class="title"><a href="{{ post.get_url }}">{{post.title}}</a></h6>
+                                                <ul class="blog-meta">
+                                                    <li><i class="icon-27"></i>{{post.created_on|date:'d F, Y'}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                          {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget widget-categories">
+                                <div class="inner">
+                                    <h4 class="widget-title">Categories</h4>
+                                    <div class="content">
+                                        <ul class="category-list">
+                                            {% for i in links %}
+                                            <li><a href="{{ i.get_url }}">{{ i.category_name }} <span>({{i.post_set.all.count}})</span></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}        
+   

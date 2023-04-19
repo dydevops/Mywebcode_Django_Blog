@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {%block js %}
+<script>
+let previews = document.getElementsByClassName('preview');
+Array.from(previews).forEach((element)=>{
+  element.innerHTML = element.innerText;
+})
+
+</script>
+{%endblock js %} {% endcomment %}
+{% block content %}
+<!--=       Breadcrumb Area Start      =-->
+        <!--=====================================-->
+
+        <div class="edu-breadcrumb-area">
+            <div class="container">
+                <div class="breadcrumb-inner">
+                    <div class="page-title">
+                        <h1 class="title">Blog</h1>
+                    </div>
+                    <ul class="edu-breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="separator"><i class="icon-angle-right"></i></li>
+                        <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="shape-group">
+                <li class="shape-1">
+                    <span></span>
+                </li>
+                <li class="shape-2 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape"></li>
+                <li class="shape-3 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-15.png' %}" alt="shape"></li>
+                <li class="shape-4">
+                    <span></span>
+                </li>
+                <li class="shape-5 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="shape"></li>
+            </ul>
+        </div>
+
+        <!--=====================================-->
+        <!--=        Blog Area Start            =-->
+        <!--=====================================-->
+        <section class="section-gap-equal">
+            <div class="container">
+                <div class="row row--30">
+                    <div class="col-lg-8">
+                        {% if allPosts %}
+                        {% for post in allPosts %}
+                        <div class="edu-blog blog-style-list" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                <div class="thumbnail">
+                                    <a href="{{ post.get_url }}">
+                                        <img src="{{ post.image.url }}" alt="Blog Images">
+                                    </a>
+                                </div>
+                                </div>
+                                <div class="col-lg-6">
+                                <div class="content">
+                                    <h5 class="title"><a href="{{ post.get_url }}">{{post.title}}</a></h5>
+                                    <ul class="blog-meta">
+                                        <li><i class="icon-62"></i>{{post.author}}</li>
+                                        <li><i class="icon-27"></i>{{post.created_on|date:'d F, Y'}}</li>
+                                    </ul>
+                                    <p><div class="preview">{{post.content|safe|truncatechars:100 }}</div></p>
+                                    <div class="read-more-btn">
+                                        <a class="edu-btn btn-border btn-medium" href="{{ post.get_url }}">Learn More <i class="icon-4"></i></a>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        	<div>
+                        		<h2 style="text-align: left;">No results found!</h2>
+                                <p style="text-align: left;">There were no results matching your search <strong>{{query}}</strong></p>
+                                <h2 style="text-align: left;">Suggestions:</h2>
+                                <ul>
+                                <li>Make sure that all words are spelled correctly.</li>
+                                <li>Try different keywords.</li>
+                                <li>Try more general keywords.</li>
+                                </ul>
+                        	</div>
+                        {% endif %}
+
+                        {% if allPosts.has_other_pages %}
+                        <ul class="edu-pagination top-space-30 justify-content-start">
+                            {% if allPosts.has_previous %}
+                            <li><a href="?page={{allPosts.previous_page_number}}" aria-label="Previous"><i class="icon-west"></i></a></li>
+                            {% else %}
+                            <li class="page-item disabled"><a aria-label="Previous"><i class="icon-west"></i></a></li>
+                			{% endif %}
+                            {% for i in allPosts.paginator.page_range %}
+                              {% if allPosts.number == i %}
+                            <li class="active"><a href="#">{{i}}</a></li>
+                            {% else %}
+                            <li><a href="?page={{i}}">{{i}}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {% comment %} <li><a href="#">3</a></li>
+                            <li class="more-next"><a href="#"></a></li>
+                            <li><a href="#">8</a></li> {% endcomment %}
+                            {% if allPosts.has_next %}
+                            <li><a href="?page={{allPosts.next_page_number}}" aria-label="Next"><i class="icon-east"></i></a></li>
+                            {% else %}
+                            <li class="disabled"><a aria-label="Next"><i class="icon-east"></i></a></li>
+                            {% endif %}
+                        </ul>
+                        {% endif %}
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="edu-blog-sidebar">
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget widget-search">
+                                <div class="inner">
+                                    <h4 class="widget-title">Search</h4>
+                                    <div class="content">
+                                        <form class="blog-search" action="{% url 'search' %}" method="GET">
+                                            {% csrf_token %}
+                                            <input type="text" placeholder="Search" name="keyword" value="{{request.GET.keyword}}">
+                                            <button class="search-button" type="submit"><i class="icon-2"></i></button>
+                                            
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget widget-latest-post">
+                                <div class="inner">
+                                    <h4 class="widget-title">Latest Post</h4>
+                                    <div class="content latest-post-list">
+                                        {% for post in recent_posts %}
+                                        <div class="latest-post ">
+                                            <div class="thumbnail">
+                                                <a href="{{ post.get_url }}">
+                                                    <img src="{{ post.image.url }}" alt="Blog Images">
+                                                </a>
+                                            </div>
+                                            <div class="post-content">
+                                                <h6 class="title"><a href="{{ post.get_url }}">{{post.title}}</a></h6>
+                                                <ul class="blog-meta">
+                                                    <li><i class="icon-27"></i>{{post.created_on|date:'d F, Y'}}</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                          {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+                            <!-- Start Single Widget  -->
+                            <div class="edu-blog-widget widget-categories">
+                                <div class="inner">
+                                    <h4 class="widget-title">Categories</h4>
+                                    <div class="content">
+                                        <ul class="category-list">
+                                            {% for i in links %}
+                                            <li><a href="{{ i.get_url }}">{{ i.category_name }} <span>({{i.post_set.all.count}})</span></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Single Widget  -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}        
+   

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="edu-breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="page-title">
+                <h1 class="title"><span>{{user.full_name}}</span></h1>
+            </div>
+            <ul class="edu-breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="separator"><i class="icon-angle-right"></i></li>
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="separator"><i class="icon-angle-right"></i></li>
+                <li class="breadcrumb-item active" aria-current="page">{{user.full_name}}</li>
+            </ul>
+        </div>
+    </div>
+    <ul class="shape-group">
+        <li class="shape-1">
+            <span></span>
+        </li>
+        <li class="shape-2 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape"></li>
+        <li class="shape-3 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-15.png' %}" alt="shape"></li>
+        <li class="shape-4">
+            <span></span>
+        </li>
+        <li class="shape-5 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="shape"></li>
+    </ul>
+</div>
+<section class="account-page-area section-gap-equal">
+    <div class="container position-relative">
+        {% include 'includes/alerts.html' %}
+        <div class="row g-5 justify-content-left">
+            {% include 'includes/dashboard_sidebar.html' %}  
+            <div class="col-md-7 offset-md-1">
+                <article class="card">
+                    <header class="card-header">
+                        <strong class="d-inline-block mr-3">Logged in as:</strong>
+                        <span>{{user.full_name}}</span>
+                    </header>
+                    <div class="card-body">
+                        <div class="row">
+                        <div class="col-md-6">
+                            <div class="card" style="text-align:center;">
+                                <div class="card-body">
+                                    <img src="{{userprofile.profile_picture.url}}" alt="User Profile Picture" width="50" height="50" style="border-radius:50%;">
+                                    <p class="mb-0">{{user.email}}</p>
+                                    <p>{{user.phone_number}}</p>
+                                </div>
+                            </div>
+                        </div>
+            
+                        </div> <!-- row.// -->
+                    </div> <!-- card-body .// -->
+            
+                    </article> <!-- order-group.// -->
+            </div>
+        </div>
+        <ul class="shape-group">
+            <li class="shape-1 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="Shape"></li>
+            <li class="shape-2 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape"></li>
+            <li class="shape-3 scene"><img data-depth="2" src="{% static 'assets/images/counterup/shape-02.png' %}" alt="Shape"></li>
+        </ul>
+    </div>
+</section>
+    {% endblock %}   

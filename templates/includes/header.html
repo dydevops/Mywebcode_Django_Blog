@@ -1,0 +1,150 @@
+{% load static %}
+<!--=====================================-->
+<header class="edu-header header-style-3">
+    <div class="header-top-bar">
+        <div class="container">
+            <div class="header-top">
+                <div class="header-top-left">
+                    <ul class="header-info">
+                        <li><a href="tel:+917977515433"><i class="icon-phone"></i>Call: +91-9452428546</a></li>
+                        <li><a href="mailto:info@mywebcode.com" target="_blank"><i class="icon-envelope"></i>Email: info@mywebcode.com</a></li>
+                    </ul>
+                </div>
+                <div class="header-top-right">
+                    <ul class="header-info">
+                        {%  if user.is_authenticated %}
+                        <li><a href="{% url 'dashboard' %}">Hello, {{user.first_name}}!</a></li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="#loginModal" data-toggle="modal">Login</a></li>
+                        <li class="header-btn"><a href="#signupModal" class="edu-btn btn-medium" data-toggle="modal">Register<i class="icon-4"></i></a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="edu-sticky-placeholder"></div>
+    <div class="header-mainmenu">
+        <div class="container">
+            <div class="header-navbar">
+                <div class="header-brand">
+                    <div class="logo">
+                        <a href="{% url 'home' %}">
+                            <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                            <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
+                        </a>
+                    </div>
+                </div>
+                <div class="header-mainnav">
+                    <nav class="mainmenu-nav">
+                        <ul class="mainmenu">
+                            <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                            <li class="has-droupdown"><a href="#">Categories</a>
+                                <ul class="submenu">
+                                    <li><a href="{% url 'post' %}">Python</a></li>
+                                    <li><a href="{% url 'post' %}">Django</a></li>
+                                    <li><a href="{% url 'post' %}">React Js</a></li>
+                                    <li><a href="{% url 'post' %}">Javascript</a></li>
+                                    <li><a href="{% url 'post' %}">Wordpress</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="active"><a href="{% url 'post' %}">Blog</a></li>
+                            {%  if user.is_authenticated %}
+                            <li class="has-droupdown"><a href="#">Hello, {{user.first_name}}!</a>
+                                <ul class="submenu">
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                    <li><a href="#">Edit Profile</a></li>
+                                    <li><a href="#">Create Post</a></li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li><a href="#loginModal" data-toggle="modal">Login</a></li>
+                            <li><a href="#signupModal" data-toggle="modal">Signup</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <ul class="header-action">
+                        <li class="icon search-icon">
+                            <a href="javascript:void(0)" class="search-trigger">
+                                <i class="icon-2"></i>
+                            </a>
+                        </li>
+                        <li class="mobile-menu-bar d-block d-xl-none">
+                            <button class="hamberger-button">
+                                <i class="icon-54"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="popup-mobile-menu">
+        <div class="inner">
+            <div class="header-top">
+                <div class="logo">
+                    <a href="index.html">
+                        <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                        <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
+                    </a>
+                </div>
+                <div class="close-menu">
+                    <button class="close-button">
+                        <i class="icon-73"></i>
+                    </button>
+                </div>
+            </div>
+            <ul class="mainmenu">
+                <li class="active"><a href="{% url 'home' %}">Home</a></li>
+                <li class="has-droupdown"><a href="#">Categories</a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'post' %}">Python</a></li>
+                        <li><a href="{% url 'post' %}">Django</a></li>
+                        <li><a href="{% url 'post' %}">React Js</a></li>
+                        <li><a href="{% url 'post' %}">Javascript</a></li>
+                        <li><a href="{% url 'post' %}">Wordpress</a></li>
+                    </ul>
+                </li>
+
+                <li class="active"><a href="{% url 'post' %}">Blog</a></li>
+                {%  if user.is_authenticated %}
+                <li class="has-droupdown"><a href="#">Hello, {{user.first_name}}!</a>
+                    <ul class="submenu">
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        <li><a href="#">Edit Profile</a></li>
+                        <li><a href="#">Create Post</a></li>
+                    </ul>
+                </li>
+                {% else %}
+                <li><a href="#loginModal" data-toggle="modal">Login</a></li>
+                <li><a href="#signupModal" data-toggle="modal">Signup</a></li>
+                {% endif %}
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- Start Search Popup  -->
+    <div class="edu-search-popup">
+        <div class="content-wrap">
+            <div class="site-logo">
+                <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
+            </div>
+            <div class="close-button">
+                <button class="close-trigger"><i class="icon-73"></i></button>
+            </div>
+            <div class="inner">
+                <form class="search-form" action="{% url 'search' %}" method="GET">
+                    <input type="text" name="keyword" value="{{request.GET.keyword}}" class="edublink-search-popup-field" placeholder="Search Here..." >
+                    <button class="submit-button" type="submit"><i class="icon-2"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Search Popup  -->
+</header>

@@ -1,0 +1,102 @@
+{% load static %}
+<!-- Start Footer Area  -->
+        <footer class="edu-footer footer-lighten bg-image footer-style-1">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row g-5">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="edu-footer-widget">
+                                <div class="logo">
+                                    <a href="index.html">
+                                        <img class="logo-light" src="{% static 'assets/images/logo/logo-dark.png' %}" alt="Corporate Logo">
+                                        <img class="logo-dark" src="{% static 'assets/images/logo/logo-white.png' %}" alt="Corporate Logo">
+                                    </a>
+                                </div>
+                                <p class="description">Hello, I am Dharmendra Yadav and I am a Python Django Web Developer, Web Designer, Search Engine Optimizer. I love all the things to do with Python and write about it.</p>
+                                <div class="widget-information">
+                                    <ul class="information-list">
+                                        <li><span>Email:</span><a href="mailto:info@mywebcode.com" target="_blank">info@mywebcode.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="edu-footer-widget explore-widget">
+                                <h4 class="widget-title">Categories</h4>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        {% for category in links %}
+                                         {% if forloop.counter <= 6 %}
+                                        <li><a href="{{ category.get_url }}">{{ category.category_name }}</a></li>
+                                        {%endif%}
+                                       {% endfor %}
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="edu-footer-widget quick-link-widget">
+                                <h4 class="widget-title">Links</h4>
+                                <div class="inner">
+                                    <ul class="footer-link link-hover">
+                                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                        <li><a href="{% url 'post' %}">Blog</a></li>
+                                        {%  if user.is_authenticated %}
+                                        <li><a href="{% url 'dashboard' %}">Hello, {{user.first_name}}!</a></li>
+                                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                                        {% else %}
+                                        <li><a href="{% url 'login' %}">Login</a></li>
+                                        <li><a href="{% url 'register' %}">Sign up</a></li>
+                                        {% endif %}
+                                        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                                        <li><a href="{% url 'forgotPassword' %}">Forgot Password</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="edu-footer-widget">
+                                <h4 class="widget-title">Subscribe to our newsletter</h4>
+                                <div class="inner">
+                                    <p class="description">Enter your email address to register to our newsletter subscription</p>
+                                    <div class="input-group footer-subscription-form">
+                                        <input type="email" class="form-control" placeholder="Your email">
+                                        <button class="edu-btn btn-medium" type="button">Subscribe <i class="icon-4"></i></button>
+                                    </div>
+                                    <ul class="social-share icon-transparent">
+                                        <li><a href="#" class="color-fb"><i class="icon-facebook"></i></a></li>
+                                        <li><a href="#" class="color-linkd"><i class="icon-linkedin2"></i></a></li>
+                                        <li><a href="#" class="color-ig"><i class="icon-instagram"></i></a></li>
+                                        <li><a href="#" class="color-twitter"><i class="icon-twitter"></i></a></li>
+                                        <li><a href="#" class="color-yt"><i class="icon-youtube"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="inner text-center">
+                                <p>Copyright 2022 <a href="#">DyDevOps</a> Designed By <a href="https://www.mywebcode.com" target="_blank">MyWebCode</a> All Rights Reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer Area  -->
+
+
+
+    </div>
+
+    <div class="rn-progress-parent">
+        <svg class="rn-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
+            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+        </svg>
+    </div>

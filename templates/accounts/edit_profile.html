@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="edu-breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="page-title">
+                <h1 class="title">Edit your profile</h1>
+            </div>
+            <ul class="edu-breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="separator"><i class="icon-angle-right"></i></li>
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="separator"><i class="icon-angle-right"></i></li>
+                <li class="breadcrumb-item active" aria-current="page">Edit your profile</li>
+            </ul>
+        </div>
+    </div>
+    <ul class="shape-group">
+        <li class="shape-1">
+            <span></span>
+        </li>
+        <li class="shape-2 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape"></li>
+        <li class="shape-3 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-15.png' %}" alt="shape"></li>
+        <li class="shape-4">
+            <span></span>
+        </li>
+        <li class="shape-5 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="shape"></li>
+    </ul>
+</div>
+<section class="account-page-area section-gap-equal">
+    <div class="container position-relative">
+        {% include 'includes/alerts.html' %}
+        <div class="row g-5 justify-content-left">
+            {% include 'includes/dashboard_sidebar.html' %}  
+            <div class="col-md-9 offset-md-0">
+                <div class="login-form-box registration-form">
+                    <h3 class="title">Edit your profile</h3>
+                    <div class="row" style="background-color: #f4f0f0; padding:10px;">
+                        <div class="col-md-6">
+                            {{userprofile.author_title}}
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <img src="{{userprofile.profile_picture.url}}" alt="Profile Picture" width="50" style="border-radius:50px;">
+                        </div>
+                    </div>
+                    <form action="{% url 'edit_profile' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>First Name</label>
+                                {{user_form.first_name}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Last Name</label>
+                                {{user_form.last_name}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Phone Number</label>
+                                {{user_form.phone_number}}
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Profile Picture</label>
+                                {{profile_form.profile_picture}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>User Title Name</label>
+                                {{profile_form.author_title}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label>Bio</label>
+                                {{profile_form.bio}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Address Line 1</label>
+                            {{profile_form.address_line_1}}
+                        </div>
+                        <div class="form-group">
+                            <label>Address Line 2</label>
+                            {{profile_form.address_line_2}}
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>City</label>
+                                {{profile_form.city}}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>State</label>
+                                {{profile_form.state}}
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>Country</label>
+                                {{profile_form.country}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{profile_form.media}}
+                            <input type="submit" value="Save" class="list-group-item active">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <ul class="shape-group">
+            <li class="shape-1 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="Shape"></li>
+            <li class="shape-2 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape"></li>
+            <li class="shape-3 scene"><img data-depth="2" src="{% static 'assets/images/counterup/shape-02.png' %}" alt="Shape"></li>
+        </ul>
+    </div>
+</section>
+    {% endblock %}  

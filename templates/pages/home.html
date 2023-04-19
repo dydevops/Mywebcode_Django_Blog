@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {%block js %}
+<script>
+let previews = document.getElementsByClassName('preview');
+Array.from(previews).forEach((element)=>{
+  element.innerHTML = element.innerText;
+})
+
+</script>
+{%endblock js %} {% endcomment %}
+{% block content %}
+<div class="hero-banner hero-style-1">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="banner-content">
+                    <h1 class="title" data-sal-delay="100" data-sal="slide-up" data-sal-duration="1000">Get <span class="color-secondary">2500+</span> <br>Best Online Courses From DyDevOps</h1>
+                    <p data-sal-delay="200" data-sal="slide-up" data-sal-duration="1000">Excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit.</p>
+                    <div class="banner-btn" data-sal-delay="400" data-sal="slide-up" data-sal-duration="1000">
+                        <a href="{% url 'post' %}" class="edu-btn">Find courses <i class="icon-4"></i></a>
+                    </div>
+                    <ul class="shape-group">
+                        <li class="shape-1 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="banner-thumbnail">
+                    <div class="thumbnail" data-sal-delay="500" data-sal="slide-left" data-sal-duration="1000">
+                        <img src="{% static 'assets/images/banner/girl-1.webp' %}" alt="Girl Image">
+                    </div>
+                    <div class="instructor-info" data-sal-delay="600" data-sal="slide-up" data-sal-duration="1000">
+                        <div class="inner">
+                            <h5 class="title">Instrunctor</h5>
+                            <div class="media">
+                                <div class="thumb">
+                                    <img src="{% static 'assets/images/banner/author-1.png' %}" alt="Images">
+                                </div>
+                                <div class="content">
+                                    <span>200+</span> Instactors
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="shape-group">
+                        <li class="shape-1" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <img data-depth="1.5" src="{% static 'assets/images/about/shape-15.png' %}" alt="Shape">
+                        </li>
+                        <li class="shape-2 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <img data-depth="-1.5" src="{% static 'assets/images/about/shape-16.png' %}" alt="Shape">
+                        </li>
+                        <li class="shape-3 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <span data-depth="3" class="circle-shape"></span>
+                        </li>
+                        <li class="shape-4" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <img data-depth="-1" src="{% static 'assets/images/counterup/shape-02.png' %}" alt="Shape">
+                        </li>
+                        <li class="shape-5 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <img data-depth="1.5" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape">
+                        </li>
+                        <li class="shape-6 scene" data-sal-delay="1000" data-sal="fade" data-sal-duration="1000">
+                            <img data-depth="-2" src="{% static 'assets/images/about/shape-18.png' %}" alt="Shape">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="shape-7">
+        <img src="{% static 'assets/images/about/h-1-shape-01.png' %}" alt="Shape">
+    </div>
+</div>
+ <!-- Start Categories Area  -->
+ <div class="features-area-2">
+    <div class="container">
+        <div class="features-grid-wrap">
+            <div class="features-box features-style-2 edublink-svg-animate">
+                <div class="icon">
+                    <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/online-class.svg' %}" alt="animated icon">
+                </div>
+                <div class="content">
+                    <h5 class="title"><span>3020</span> Online Courses</h5>
+                </div>
+            </div>
+            <div class="features-box features-style-2 edublink-svg-animate">
+                <div class="icon">
+                    <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/instructor.svg' %}" alt="animated icon">
+                </div>
+                <div class="content">
+                    <h5 class="title"><span>Top</span>Instructors</h5>
+                </div>
+            </div>
+            <div class="features-box features-style-2 edublink-svg-animate">
+                <div class="icon certificate">
+                    <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/certificate.svg' %}" alt="animated icon">
+                </div>
+                <div class="content">
+                    <h5 class="title"><span>Online</span>Certifications</h5>
+                </div>
+            </div>
+            <div class="features-box features-style-2 edublink-svg-animate">
+                <div class="icon">
+                    <img class="svgInject" src="{% static 'assets/images/animated-svg-icons/user.svg' %}" alt="animated icon">
+                </div>
+                <div class="content">
+                    <h5 class="title"><span>6000</span>Members</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories Area  -->
+         <!-- Start Blog Area  -->
+         <div class="edu-blog-area blog-area-4 edu-section-gap">
+            <div class="container">
+                <div class="section-title section-center sal-animate" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                    <span class="pre-title pre-textsecondary">Our Articles</span>
+                    <h2 class="title">Check Out Our Latest Blog</h2>
+                    <span class="shape-line"><i class="icon-19"></i></span>
+                </div>
+                <div class="row g-5">
+                    {% for post in allPosts %}
+                    <!-- Start Blog Grid  -->
+                    <div class="col-lg-4 col-md-6 col-12 sal-animate" data-sal-delay="150" data-sal="slide-up" data-sal-duration="800">
+                        <div class="edu-blog blog-style-3">
+                            <div class="inner">
+                                <div class="thumbnail">
+                                    <a href="{{ post.get_url }}">
+                                        <img src="{{ post.image.url }}" alt="Blog Images">
+                                    </a>
+                                    <div class="read-more-btn">
+                                        <a class="btn-icon-round" href="{{ post.get_url }}"><i class="icon-4"></i></a>
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <div class="category-wrap">
+                                        <a href="#" class="blog-category">{{post.category }}</a>
+                                    </div>
+                                    <h5 class="title"><a href="{{ post.get_url }}">{{post.title|truncatechars:65}}</a></h5>
+                                    <ul class="blog-meta">
+                                        <li><i class="icon-62"></i>{{post.author}}</li>
+                                        <li><i class="icon-27"></i>{{post.created_on|date:'d F, Y'}}</li>
+                                    </ul>
+                                    <p><div class="preview">{{post.content|safe|truncatechars:70 }}</div></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Blog Grid  -->
+                    {% endfor %}
+                   
+                    
+                </div>
+            </div>
+        </div>
+        <!-- End Blog Area  -->
+{% endblock %}        
+   

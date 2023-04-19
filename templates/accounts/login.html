@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="edu-breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-inner">
+            <div class="page-title">
+                <h1 class="title"><span>{{user.full_name}}</span></h1>
+            </div>
+            <ul class="edu-breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                <li class="separator"><i class="icon-angle-right"></i></li>
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li class="separator"><i class="icon-angle-right"></i></li>
+                <li class="breadcrumb-item active" aria-current="page">{{user.full_name}}</li>
+            </ul>
+        </div>
+    </div>
+    <ul class="shape-group">
+        <li class="shape-1">
+            <span></span>
+        </li>
+        <li class="shape-2 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape"></li>
+        <li class="shape-3 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-15.png' %}" alt="shape"></li>
+        <li class="shape-4">
+            <span></span>
+        </li>
+        <li class="shape-5 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="shape"></li>
+    </ul>
+</div>
+<section class="account-page-area section-gap-equal">
+  <div class="container position-relative">
+      <div class="row g-5 justify-content-left">
+        {% if request.GET.command == 'verification' %}
+
+          <div class="container mx-auto alert alert-info text-center" role="alert" style="max-width: 1024px; margin-top:100px;">
+          Thank you for registering with us. We have sent you a verification email to your email address [{{ request.GET.email }}]
+          <br><br>
+          Already verified? <a href="{% url 'login' %}">Login</a>
+          </div>
+          
+          {% else %} 
+          <div class="col-md-6 offset-md-3">
+            {% include 'includes/alerts.html' %}
+              <div class="login-form-box registration-form">
+                  <h3 class="title">Sign in</h3>
+                  <form name="myform" action="{% url 'login' %}" method="POST"  onsubmit="return validateform()" required>
+                    {% csrf_token %}
+                      <div class="form-group">
+                          <label for="log-email">Email</label>
+                          <input type="email" placeholder="Email Address" name="email">
+                      </div>
+                      <div class="form-group">
+                          <label for="log-password">password</label>
+                          <input type="password" placeholder="Password" name="password" id="myInput">
+                          <span class="password-show"><i class="icon-76" type="checkbox" onclick="myFunction()"></i></span>
+                      </div>
+                      {% comment %} <div class="form-group">
+                        <label for="log-password">cpassword</label>
+                        <input type="password" placeholder="Password" name="cpassword" id="myInput">
+                        <span class="password-show"><i class="icon-76" type="checkbox" onclick="myFunction()"></i></span>
+                    </div> {% endcomment %}
+                      <div class="form-group">
+                        <a href="{% url 'forgotPassword' %}" class="float-right">Forgot password?</a>
+            
+                      </div> <!-- form-group form-check .// -->
+                      <div class="form-group">
+                        <button type="submit" class="rn-btn edu-btn btn-medium submit-btn">Login<i class="icon-4"></i></button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+          <p class="text-center mt-4">Don't have account? <a href="{% url 'register' %}">Sign up</a></p>
+          <br><br>
+          {% endif %}
+      </div>
+      <ul class="shape-group">
+          <li class="shape-1 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="Shape"></li>
+          <li class="shape-2 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape"></li>
+          <li class="shape-3 scene"><img data-depth="2" src="{% static 'assets/images/counterup/shape-02.png' %}" alt="Shape"></li>
+      </ul>
+  </div>
+</section>
+{% endblock %}  

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% comment %} {%block js %}
+<script>
+let previews = document.getElementsByClassName('preview');
+Array.from(previews).forEach((element)=>{
+  element.innerHTML = element.innerText;
+})
+
+</script>
+{%endblock js %} {% endcomment %}
+{% block content %}
+<!--=       Breadcrumb Area Start      =-->
+        <!--=====================================-->
+
+        <div class="edu-breadcrumb-area">
+          <div class="container">
+              <div class="breadcrumb-inner">
+                  <div class="page-title">
+                      <h1 class="title">Contact Us </h1>
+                  </div>
+                  <ul class="edu-breadcrumb">
+                      <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+                      <li class="separator"><i class="icon-angle-right"></i></li>
+                      <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                  </ul>
+              </div>
+          </div>
+          <ul class="shape-group">
+              <li class="shape-1">
+                  <span></span>
+              </li>
+              <li class="shape-2 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-13.png' %}" alt="shape"></li>
+              <li class="shape-3 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-15.png' %}" alt="shape"></li>
+              <li class="shape-4">
+                  <span></span>
+              </li>
+              <li class="shape-5 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="shape"></li>
+          </ul>
+      </div>
+      <!--=       Contact Me Area Start       =-->
+      <section class="account-page-area section-gap-equal">
+        <div class="container position-relative">
+            <div class="row g-5 justify-content-left">
+                <div class="col-md-6">
+                    <div class="contact-us-info">
+                        <h3 class="heading-title">We're Always Eager to Hear From You!</h3>
+                        <ul class="address-list">
+                            <li>
+                                <h5 class="title">Address</h5>
+                                <p> Kathawtiya, Prithavipur, Jaunpur, 222203, Uttar Pradesh</p>
+                            </li>
+                            <li>
+                                <h5 class="title">Email</h5>
+                                <p><a href="mailto:info@mywebcode.com">info@mywebcode.com</a></p>
+                            </li>
+                            <li>
+                                <h5 class="title">Phone</h5>
+                                <p><a href="tel:+919452428546">(+091)9452428546</a></p>
+                            </li>
+                        </ul>
+                        <ul class="social-share">
+                            <li><a href="#"><i class="icon-share-alt"></i></a></li>
+                            <li><a href="#"><i class="icon-facebook"></i></a></li>
+                            <li><a href="#"><i class="icon-twitter"></i></a></li>
+                            <li><a href="#"><i class="icon-linkedin2"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="login-form-box registration-form">
+                        <h3 class="title">Get In Touch</h3>
+                        <p>Fill out this form for booking a consultant advising session.</p>
+                        <form action="{% url 'contact' %}" method="POST" enctype="multipart/form-data">
+                            {% include 'includes/alerts.html' %}
+                          {% csrf_token %}
+                            <div class="form-group">
+                                <input type="text" name="name"  placeholder="Your name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="Email Address" name="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="phone" placeholder="Phone number">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="subject" placeholder="Your subject ">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message"  cols="30" rows="4" placeholder="Your message"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <button type="submit" class="rn-btn edu-btn btn-medium submit-btn">Submit<i class="icon-4"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <ul class="shape-group">
+                <li class="shape-1 scene"><img data-depth="2" src="{% static 'assets/images/about/shape-07.png' %}" alt="Shape"></li>
+                <li class="shape-2 scene"><img data-depth="-2" src="{% static 'assets/images/about/shape-13.png' %}" alt="Shape"></li>
+                <li class="shape-3 scene"><img data-depth="2" src="{% static 'assets/images/counterup/shape-02.png' %}" alt="Shape"></li>
+            </ul>
+        </div>
+      </section>
+      {% endblock %}        
