@@ -39,8 +39,9 @@ Make sure you are in `env` and then do the following each at a time.
 
 ```bash
 (env)$ python manage.py makemigrations
-(env)$ python manage.py makemigrations blogApp
-(env)$ python manage.py makemigrations users
+(env)$ python manage.py makemigrations blog
+(env)$ python manage.py makemigrations accounts
+(env)$ python manage.py makemigrations pages
 (env)$ python manage.py migrate
 (env)$ python manage.py createsuperuser
 (env)$ python manage.py runserver
