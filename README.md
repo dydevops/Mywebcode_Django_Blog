@@ -1,17 +1,7 @@
-# Django Blog Webgenisys
-# This is a full-featured Blog application made completely with Python Django, GraphQL and Bootstrap
-# Visit Our Blog https://www.mywebcode.com/
+# Mywebcode Django Blog
+# This is a full-featured Blog application made completely with Python Django, Bootstrap Template Use
+# Visit Our Blog https://www.dydevops.com/
 
-<p align="left">
-    <a href="https://github.com/dkyadavweb/django-blog-wbgenisys/issues" alt="Issues">
-        <img src="https://img.shields.io/github/issues/dkyadavweb/django-blog-wbgenisys" /></a>
-    <a href="https://github.com/dkyadavweb/django-blog-wbgenisys/pulls" alt="Pull Requests">
-        <img src="https://img.shields.io/github/issues-pr/dkyadavweb/django-blog-wbgenisys" /></a>
-    <a href="https://github.com/dkyadavweb/django-blog-wbgenisys/network/members" alt="Forks">
-        <img src="https://img.shields.io/github/forks/dkyadavweb/django-blog-wbgenisys" /></a>
-    <a href="https://github.com/dkyadavweb/django-blog-wbgenisys/stargazers" alt="Stars">
-        <img src="https://img.shields.io/github/stars/dkyadavweb/django-blog-wbgenisys" /></a>
-</p>
 This Blogging web application project is purely made with Django as the backend and Bootstrap as the frontend.
 
 ## Installation Instructions
